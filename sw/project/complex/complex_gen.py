@@ -66,17 +66,52 @@ def angle(a):
     result = torch.zeros(length)
     for i in range(length):
         div = a[0][2*i + 1] / a[0][2*i]
-        print(div)
         result[i] = math.atan(div)         #3rd quadrant will give positive angle (like 1. and 2.) but 4th will give negative angles
         if( a[0][2*i] < 0):
             result[i] += math.pi 
     return result
 
 
-print(a)
+#print(array_to_cstr(addition(a,b)))
+# print(magnitude(a))
+# print("break")
+# print(angle(a))
+def polar(a):
+    re1 = magnitude(a)
+    re2 = angle(a)
+    re3 = torch.zeros(2 * length)
+    for i in range(length):
+        re3[2*i] = re1[i]
+        re3[2*i + 1] = re2[i]
+    return re3
 
-print(magnitude(a))
-print("break")
-print(angle(a))
+# print(a)
+# print(re1)
+# print(re2)
+# print(polar(a))
+# print(multiplication(a,b))
 
-#print(multiplication(a,b))
+
+
+# write to data.h
+
+file_path = pathlib.Path('/home/bsc22f7/scratch/snitch/sw/project/complex')
+file = file_path / 'complex_data.h'
+
+data_str = ''
+data_str += '#include <stdint.h>\n\n'
+data_str += '// input arrays of the form {real, imag,...}\n'
+data_str += f'static double a [] = ' + array_to_cstr(a) + ';\n\n\n'
+data_str += f'static double b [] = ' + array_to_cstr(b) + ';\n\n\n'
+data_str += '// addition result array of the form {real, imag,...}\n'
+data_str += f'static double add_array [] = ' + array_to_cstr(addition(a,b)) + ';\n\n\n'
+data_str += '// multiplication result array of the form {real, imag,...}\n'
+data_str += f'static double mul_array [] = ' + array_to_cstr(multiplication(a,b)) + ';\n\n\n'
+data_str += '// polar result array of the form {mag, angle,...}\n'
+data_str += f'static double polar_array [] = ' + array_to_cstr(polar(a)) + ';\n\n\n'
+data_str += '// array size\n'
+data_str += f'uint32_t size = ' + str(2 * length) + ';\n\n'
+
+
+with file.open('w') as f:
+    f.write(data_str)
