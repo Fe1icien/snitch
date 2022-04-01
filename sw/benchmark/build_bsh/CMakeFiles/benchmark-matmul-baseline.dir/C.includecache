@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/benchmark.h
+snrt.h
+-
+stddef.h
+-
+printf.h
+../include/printf.h
+
+/home/bsc22f7/scratch/snitch/sw/benchmark/src/matmul/main_baseline.c
+matmul.h
+/home/bsc22f7/scratch/snitch/sw/benchmark/src/matmul/matmul.h
+
+/home/bsc22f7/scratch/snitch/sw/benchmark/src/matmul/matmul.h
+benchmark.h
+/home/bsc22f7/scratch/snitch/sw/benchmark/src/matmul/benchmark.h
+
+/home/bsc22f7/scratch/snitch/sw/snRuntime/include/snrt.h
+stddef.h
+-
+stdint.h
+-
+encoding.h
+/home/bsc22f7/scratch/snitch/sw/snRuntime/include/encoding.h
+
+/home/bsc22f7/scratch/snitch/sw/snRuntime/vendor/printf.h
+stdarg.h
+-
+stddef.h
+-
+
+/home/bsc22f7/scratch/snitch/sw/snRuntime/vendor/riscv-opcodes/encoding.h
+

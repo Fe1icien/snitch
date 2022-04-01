@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/bsc22f7/scratch/snitch/sw/snRuntime/src/platforms/banshee/start_snitch.S
+../shared/start_snitch.S
+/home/bsc22f7/scratch/snitch/sw/snRuntime/src/platforms/shared/start_snitch.S
+
+/home/bsc22f7/scratch/snitch/sw/snRuntime/src/platforms/shared/start_snitch.S
+../../start.S
+/home/bsc22f7/scratch/snitch/sw/snRuntime/src/start.S
+
+/home/bsc22f7/scratch/snitch/sw/snRuntime/src/start.S
+

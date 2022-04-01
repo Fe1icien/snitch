@@ -1,0 +1,122 @@
+The system is: Linux - 3.10.0-1160.31.1.el7.x86_64 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/riscv32-unknown-elf-clang 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+
+The C compiler identification is Clang, found in "/home/bsc22f7/scratch/snitch/sw/applications/build/CMakeFiles/3.18.1/CompilerIdC/CMakeCCompilerId.o"
+
+Checking whether the ASM compiler is Clang using "--version" matched "(clang version)":
+clang version 12.0.1 (/home/builder/llvm-project/clang 06b80db68b2d0179f26416704868bae662251fe6)
+Target: riscv32-unknown-unknown-elf
+Thread model: posix
+InstalledDir: /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/bsc22f7/scratch/snitch/sw/applications/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_0499c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_0499c.dir/build.make CMakeFiles/cmTC_0499c.dir/build
+gmake[1]: Entering directory `/usr/scratch/badile01/bsc22f7/snitch/sw/applications/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0499c.dir/CMakeCCompilerABI.c.o
+/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/riscv32-unknown-elf-clang -D__LINK_LLD -D__TOOLCHAIN_LLVM__  -flto=thin   -v -mcpu=snitch -mcmodel=medany -ffast-math -fno-builtin-printf -fno-common -ffunction-sections -Wextra -static -mllvm -enable-misched=false -mno-relax -fopenmp -menable-experimental-extensions -o CMakeFiles/cmTC_0499c.dir/CMakeCCompilerABI.c.o -c /usr/pack/cmake-3.18.1-kgf/share/cmake-3.18/Modules/CMakeCCompilerABI.c
+clang version 12.0.1 (/home/builder/llvm-project/clang 06b80db68b2d0179f26416704868bae662251fe6)
+Target: riscv32-unknown-unknown-elf
+Thread model: posix
+InstalledDir: /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin
+clang-12: warning: argument unused during compilation: '-menable-experimental-extensions' [-Wunused-command-line-argument]
+ (in-process)
+ "/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/clang-12" -cc1 -triple riscv32-unknown-unknown-elf -emit-llvm-bc -flto=thin -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -static-define -mrelocation-model static -mframe-pointer=all -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -nostdsysteminc -mcmodel=medium -target-cpu snitch -target-feature +m -target-feature +a -target-feature +f -target-feature +d -target-feature +xfrep -target-feature +xssr -target-feature +xdma -target-feature -64bit -target-feature -relax -target-feature -save-restore -target-abi ilp32d -msmall-data-limit 8 -fno-split-dwarf-inlining -debugger-tuning=gdb -v -ffunction-sections -resource-dir /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/lib/clang/12.0.1 -D __LINK_LLD -D __TOOLCHAIN_LLVM__ -c-isystem /usr/pack/modelsim-10.7b-kgf/questasim/gcc-5.3.0-linux_x86_64//include -cxx-isystem /usr/pack/modelsim-10.7b-kgf/questasim/gcc-5.3.0-linux_x86_64//include -objc-isystem /usr/scratch/kneiff/paulsc/opt/verilator/share/verilator/include/vltstd/ -objc-isystem /usr/scratch/kneiff/paulsc/opt/verilator/share/verilator/include/ -objc-isystem /usr/scratch/kneiff/paulsc/opt/mkl/include/ -objc-isystem . -objc-isystem . -internal-isystem /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/../riscv32-unknown-elf/include -Wextra -fdebug-compilation-dir /usr/scratch/badile01/bsc22f7/snitch/sw/applications/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fopenmp -fopenmp-cuda-parallel-target-regions -fno-builtin-printf -fno-signed-char -fgnuc-version=4.2.1 -mllvm -enable-misched=false -faddrsig -o CMakeFiles/cmTC_0499c.dir/CMakeCCompilerABI.c.o -x c /usr/pack/cmake-3.18.1-kgf/share/cmake-3.18/Modules/CMakeCCompilerABI.c
+clang -cc1 version 12.0.1 based upon LLVM 12.0.1-70 default target riscv32-unknown-elf
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/pack/modelsim-10.7b-kgf/questasim/gcc-5.3.0-linux_x86_64//include
+ /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/../riscv32-unknown-elf/include
+ /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/lib/clang/12.0.1/include
+End of search list.
+Linking C executable cmTC_0499c
+/usr/pack/cmake-3.18.1-kgf/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0499c.dir/link.txt --verbose=1
+/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/riscv32-unknown-elf-clang -flto=thin  -v -mcpu=snitch -nostartfiles -fuse-ld=lld -Wl,--image-base=0x80000000 -static -Wl,-z,norelro -Wl,--gc-sections -Wl,--no-relax CMakeFiles/cmTC_0499c.dir/CMakeCCompilerABI.c.o -o cmTC_0499c  -lm 
+clang version 12.0.1 (/home/builder/llvm-project/clang 06b80db68b2d0179f26416704868bae662251fe6)
+Target: riscv32-unknown-unknown-elf
+Thread model: posix
+InstalledDir: /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin
+ "/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/ld.lld" -m elf32lriscv -plugin-opt=mcpu=snitch -plugin-opt=thinlto -L/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/../riscv32-unknown-elf/lib --image-base=0x80000000 -z norelro --gc-sections --no-relax CMakeFiles/cmTC_0499c.dir/CMakeCCompilerABI.c.o -lm --start-group -lc -lgloss --end-group /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/lib/clang/12.0.1/lib/libclang_rt.builtins-riscv32.a -o cmTC_0499c
+ld.lld: warning: cannot find entry symbol _start; not setting start address
+gmake[1]: Leaving directory `/usr/scratch/badile01/bsc22f7/snitch/sw/applications/build/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/pack/modelsim-10.7b-kgf/questasim/gcc-5.3.0-linux_x86_64//include]
+    add: [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/../riscv32-unknown-elf/include]
+    add: [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/lib/clang/12.0.1/include]
+  end of search list found
+  collapse include dir [/usr/pack/modelsim-10.7b-kgf/questasim/gcc-5.3.0-linux_x86_64//include] ==> [/usr/pack/modelsim-10.7b-kgf/questasim/gcc-5.3.0-linux_x86_64/include]
+  collapse include dir [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/../riscv32-unknown-elf/include] ==> [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/riscv32-unknown-elf/include]
+  collapse include dir [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/lib/clang/12.0.1/include] ==> [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/lib/clang/12.0.1/include]
+  implicit include dirs: [/usr/pack/modelsim-10.7b-kgf/questasim/gcc-5.3.0-linux_x86_64/include;/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/riscv32-unknown-elf/include;/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/lib/clang/12.0.1/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(riscv32-unknown-elf-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/bsc22f7/scratch/snitch/sw/applications/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake cmTC_0499c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_0499c.dir/build.make CMakeFiles/cmTC_0499c.dir/build]
+  ignore line: [gmake[1]: Entering directory `/usr/scratch/badile01/bsc22f7/snitch/sw/applications/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_0499c.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/riscv32-unknown-elf-clang -D__LINK_LLD -D__TOOLCHAIN_LLVM__  -flto=thin   -v -mcpu=snitch -mcmodel=medany -ffast-math -fno-builtin-printf -fno-common -ffunction-sections -Wextra -static -mllvm -enable-misched=false -mno-relax -fopenmp -menable-experimental-extensions -o CMakeFiles/cmTC_0499c.dir/CMakeCCompilerABI.c.o -c /usr/pack/cmake-3.18.1-kgf/share/cmake-3.18/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang version 12.0.1 (/home/builder/llvm-project/clang 06b80db68b2d0179f26416704868bae662251fe6)]
+  ignore line: [Target: riscv32-unknown-unknown-elf]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin]
+  ignore line: [clang-12: warning: argument unused during compilation: '-menable-experimental-extensions' [-Wunused-command-line-argument]]
+  ignore line: [ (in-process)]
+  ignore line: [ "/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/clang-12" -cc1 -triple riscv32-unknown-unknown-elf -emit-llvm-bc -flto=thin -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -static-define -mrelocation-model static -mframe-pointer=all -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -nostdsysteminc -mcmodel=medium -target-cpu snitch -target-feature +m -target-feature +a -target-feature +f -target-feature +d -target-feature +xfrep -target-feature +xssr -target-feature +xdma -target-feature -64bit -target-feature -relax -target-feature -save-restore -target-abi ilp32d -msmall-data-limit 8 -fno-split-dwarf-inlining -debugger-tuning=gdb -v -ffunction-sections -resource-dir /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/lib/clang/12.0.1 -D __LINK_LLD -D __TOOLCHAIN_LLVM__ -c-isystem /usr/pack/modelsim-10.7b-kgf/questasim/gcc-5.3.0-linux_x86_64//include -cxx-isystem /usr/pack/modelsim-10.7b-kgf/questasim/gcc-5.3.0-linux_x86_64//include -objc-isystem /usr/scratch/kneiff/paulsc/opt/verilator/share/verilator/include/vltstd/ -objc-isystem /usr/scratch/kneiff/paulsc/opt/verilator/share/verilator/include/ -objc-isystem /usr/scratch/kneiff/paulsc/opt/mkl/include/ -objc-isystem . -objc-isystem . -internal-isystem /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/../riscv32-unknown-elf/include -Wextra -fdebug-compilation-dir /usr/scratch/badile01/bsc22f7/snitch/sw/applications/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fopenmp -fopenmp-cuda-parallel-target-regions -fno-builtin-printf -fno-signed-char -fgnuc-version=4.2.1 -mllvm -enable-misched=false -faddrsig -o CMakeFiles/cmTC_0499c.dir/CMakeCCompilerABI.c.o -x c /usr/pack/cmake-3.18.1-kgf/share/cmake-3.18/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 12.0.1 based upon LLVM 12.0.1-70 default target riscv32-unknown-elf]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/pack/modelsim-10.7b-kgf/questasim/gcc-5.3.0-linux_x86_64//include]
+  ignore line: [ /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/../riscv32-unknown-elf/include]
+  ignore line: [ /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/lib/clang/12.0.1/include]
+  ignore line: [End of search list.]
+  ignore line: [Linking C executable cmTC_0499c]
+  ignore line: [/usr/pack/cmake-3.18.1-kgf/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0499c.dir/link.txt --verbose=1]
+  ignore line: [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/riscv32-unknown-elf-clang -flto=thin  -v -mcpu=snitch -nostartfiles -fuse-ld=lld -Wl,--image-base=0x80000000 -static -Wl,-z,norelro -Wl,--gc-sections -Wl,--no-relax CMakeFiles/cmTC_0499c.dir/CMakeCCompilerABI.c.o -o cmTC_0499c  -lm ]
+  ignore line: [clang version 12.0.1 (/home/builder/llvm-project/clang 06b80db68b2d0179f26416704868bae662251fe6)]
+  ignore line: [Target: riscv32-unknown-unknown-elf]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin]
+  link line: [ "/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/ld.lld" -m elf32lriscv -plugin-opt=mcpu=snitch -plugin-opt=thinlto -L/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/../riscv32-unknown-elf/lib --image-base=0x80000000 -z norelro --gc-sections --no-relax CMakeFiles/cmTC_0499c.dir/CMakeCCompilerABI.c.o -lm --start-group -lc -lgloss --end-group /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/lib/clang/12.0.1/lib/libclang_rt.builtins-riscv32.a -o cmTC_0499c]
+    arg [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/ld.lld] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf32lriscv] ==> ignore
+    arg [-plugin-opt=mcpu=snitch] ==> ignore
+    arg [-plugin-opt=thinlto] ==> ignore
+    arg [-L/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/../riscv32-unknown-elf/lib] ==> dir [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/../riscv32-unknown-elf/lib]
+    arg [--image-base=0x80000000] ==> ignore
+    arg [-znorelro] ==> ignore
+    arg [--gc-sections] ==> ignore
+    arg [--no-relax] ==> ignore
+    arg [CMakeFiles/cmTC_0499c.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lm] ==> lib [m]
+    arg [--start-group] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgloss] ==> lib [gloss]
+    arg [--end-group] ==> ignore
+    arg [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/lib/clang/12.0.1/lib/libclang_rt.builtins-riscv32.a] ==> lib [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/lib/clang/12.0.1/lib/libclang_rt.builtins-riscv32.a]
+    arg [-o] ==> ignore
+    arg [cmTC_0499c] ==> ignore
+  remove lib [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/lib/clang/12.0.1/lib/libclang_rt.builtins-riscv32.a]
+  collapse library dir [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/../riscv32-unknown-elf/lib] ==> [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/riscv32-unknown-elf/lib]
+  implicit libs: [m;c;gloss]
+  implicit dirs: [/usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/riscv32-unknown-elf/lib]
+  implicit fwks: []
+
+

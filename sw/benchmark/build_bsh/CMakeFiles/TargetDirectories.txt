@@ -1,0 +1,17 @@
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/CMakeFiles/rebuild_cache.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/CMakeFiles/benchmark.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/CMakeFiles/benchmark-matmul.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/CMakeFiles/benchmark-matmul-ssr.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/CMakeFiles/test.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/CMakeFiles/benchmark-matmul-baseline.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/CMakeFiles/edit_cache.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/CMakeFiles/benchmark-matmul-ssr_frep.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/CMakeFiles/run-banshee-benchmark-matmul-baseline.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/CMakeFiles/run-banshee-benchmark-matmul-ssr.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/CMakeFiles/run-banshee-benchmark-matmul-ssr_frep.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/CMakeFiles/benchmark-matmul-all.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/CMakeFiles/run-banshee-benchmark-matmul-all.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/snRuntime/CMakeFiles/edit_cache.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/snRuntime/CMakeFiles/test.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/snRuntime/CMakeFiles/rebuild_cache.dir
+/home/bsc22f7/scratch/snitch/sw/benchmark/build_bsh/snRuntime/CMakeFiles/snRuntime-banshee.dir

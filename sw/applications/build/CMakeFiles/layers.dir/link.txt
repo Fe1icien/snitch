@@ -1,0 +1,2 @@
+"llvm-ar" cr liblayers.a CMakeFiles/layers.dir/src/layers/batchnorm_layer.c.o CMakeFiles/layers.dir/src/layers/maxpool_layer.c.o CMakeFiles/layers.dir/src/layers/conv2d_layer.c.o
+"llvm-ranlib" liblayers.a

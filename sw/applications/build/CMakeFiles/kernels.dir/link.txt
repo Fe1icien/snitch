@@ -1,0 +1,2 @@
+"llvm-ar" cr libkernels.a CMakeFiles/kernels.dir/src/kernels/batchnorm.c.o CMakeFiles/kernels.dir/src/kernels/maxpool.c.o CMakeFiles/kernels.dir/src/kernels/gemm.c.o CMakeFiles/kernels.dir/src/kernels/conv2d.c.o
+"llvm-ranlib" libkernels.a

@@ -1,0 +1,11 @@
+# Hashes of file build rules.
+845add26c063c43c853bdf651fe4628b CMakeFiles/run-banshee-batchnorm
+d902250855ec455cec3f052ef898b7c2 CMakeFiles/run-banshee-conv2d
+cecf933e8ba6f578264245f79a47dcf5 CMakeFiles/run-banshee-fusedconv
+2d67abfbc2bdc9d2419f7c583d43d23f CMakeFiles/run-banshee-gemm
+87428564cd8e25f85bef56696e2de95d CMakeFiles/run-banshee-maxpool
+6aa2aa5d39d9e8d6fb5d8160163e6cad data/data_batchnorm.h
+0b49650d1665c9999cc80f2303d713b4 data/data_conv2d.h
+b84a49bee8dc7181a84c94330dd13809 data/data_fusedconv.h
+3602d3baaa95650c137da1ecb2701dbc data/data_gemm.h
+c98660fdadca0cb547eabfc84b766605 data/data_maxpool.h

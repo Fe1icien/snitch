@@ -1,0 +1,20 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/riscv32-unknown-elf-clang 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+/home/zarubaf/riscv/bin/riscv32-unknown-elf-ld: /tmp/CMakeCCompilerId-afc378.o: can't link soft-float modules with double-float modules
+/home/zarubaf/riscv/bin/riscv32-unknown-elf-ld: failed to merge target specific data of file /tmp/CMakeCCompilerId-afc378.o
+/home/zarubaf/riscv/bin/riscv32-unknown-elf-ld: /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin/../riscv32-unknown-elf/lib/crt0.o: in function `no symbol':
+/home/builder/newlib/libgloss/riscv/crt0.S:33: undefined reference to `__libc_fini_array'
+/home/zarubaf/riscv/bin/riscv32-unknown-elf-ld: /home/builder/newlib/libgloss/riscv/crt0.S:44: undefined reference to `__libc_init_array'
+clang-12: error: ld command failed with exit code 1 (use -v to see invocation)
+
+
+Checking whether the ASM compiler is GNU using "--version" did not match "(GNU assembler)|(GCC)|(Free Software Foundation)":
+clang version 12.0.1 (/home/builder/llvm-project/clang 06b80db68b2d0179f26416704868bae662251fe6)
+Target: riscv32-unknown-unknown-elf
+Thread model: posix
+InstalledDir: /usr/scratch/kneiff/paulsc/opt/riscv32-snitch-llvm-centos7-70/bin
