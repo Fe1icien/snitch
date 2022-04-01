@@ -1,0 +1,3 @@
+/home/bsc22f7/project/build/CMakeFiles/rebuild_cache.dir
+/home/bsc22f7/project/build/CMakeFiles/edit_cache.dir
+/home/bsc22f7/project/build/CMakeFiles/simple_kernel.dir
