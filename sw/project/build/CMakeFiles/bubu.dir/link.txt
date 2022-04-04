@@ -1,0 +1,2 @@
+"llvm-ar" cr libbubu.a CMakeFiles/bubu.dir/example_kernel/kernel.c.o
+"llvm-ranlib" libbubu.a

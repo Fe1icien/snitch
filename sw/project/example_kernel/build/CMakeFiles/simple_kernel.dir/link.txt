@@ -1,1 +1,0 @@
-/usr/pack/gcc-9.2.0-af/linux-x64/bin/gcc CMakeFiles/simple_kernel.dir/main.c.o CMakeFiles/simple_kernel.dir/kernel.c.o -o simple_kernel 

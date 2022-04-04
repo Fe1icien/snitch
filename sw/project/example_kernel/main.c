@@ -2,6 +2,7 @@
 #include "kernel.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 
 int main(){
@@ -35,7 +36,7 @@ int main(){
 	uint32_t errors = 0;
 
 	for(int i = 0; i < size; i++){
-		if(-0.00001 < (result[i] - kernel_result[i]) < 0.00001){    //rounding to 0.00001 ???
+		if(fabs(result[i] - kernel_result[i]) < 0.00001){    //rounding to 0.00001 ???
 			errors++;
 		}
 	}

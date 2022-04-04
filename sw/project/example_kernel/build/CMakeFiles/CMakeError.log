@@ -1,0 +1,94 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin/riscv32-unknown-elf-clang 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+/home/zarubaf/riscv/bin/riscv32-unknown-elf-ld: /tmp/CMakeCCompilerId-2e78a7.o: can't link soft-float modules with double-float modules
+/home/zarubaf/riscv/bin/riscv32-unknown-elf-ld: failed to merge target specific data of file /tmp/CMakeCCompilerId-2e78a7.o
+/home/zarubaf/riscv/bin/riscv32-unknown-elf-ld: /usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin/../riscv32-unknown-elf/lib/crt0.o: in function `no symbol':
+/home/builder/newlib/libgloss/riscv/crt0.S:33: undefined reference to `__libc_fini_array'
+/home/zarubaf/riscv/bin/riscv32-unknown-elf-ld: /home/builder/newlib/libgloss/riscv/crt0.S:44: undefined reference to `__libc_init_array'
+clang-12: error: ld command failed with exit code 1 (use -v to see invocation)
+
+
+Checking whether the ASM compiler is GNU using "--version" did not match "(GNU assembler)|(GCC)|(Free Software Foundation)":
+clang version 12.0.1 (/home/builder/llvm-project/clang d2f0eff9be1f58bb186499e2055eb6888ce88dcc)
+Target: riscv32-unknown-unknown-elf
+Thread model: posix
+InstalledDir: /usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin/riscv32-unknown-elf-clang++ 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+/home/zarubaf/riscv/bin/riscv32-unknown-elf-ld: /tmp/CMakeCXXCompilerId-33e3b1.o: can't link soft-float modules with double-float modules
+/home/zarubaf/riscv/bin/riscv32-unknown-elf-ld: failed to merge target specific data of file /tmp/CMakeCXXCompilerId-33e3b1.o
+/home/zarubaf/riscv/bin/riscv32-unknown-elf-ld: /usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin/../riscv32-unknown-elf/lib/crt0.o: in function `no symbol':
+/home/builder/newlib/libgloss/riscv/crt0.S:33: undefined reference to `__libc_fini_array'
+/home/zarubaf/riscv/bin/riscv32-unknown-elf-ld: /home/builder/newlib/libgloss/riscv/crt0.S:44: undefined reference to `__libc_init_array'
+clang-12: error: ld command failed with exit code 1 (use -v to see invocation)
+
+
+Detecting CXX compiler ABI info failed to compile with the following output:
+Change Dir: /home/bsc22f7/scratch/snitch/sw/project/example_kernel/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_baaf5/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_baaf5.dir/build.make CMakeFiles/cmTC_baaf5.dir/build
+gmake[1]: Entering directory `/usr/scratch/badile01/bsc22f7/snitch/sw/project/example_kernel/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_baaf5.dir/CMakeCXXCompilerABI.cpp.o
+/usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin/riscv32-unknown-elf-clang++ -D__LINK_LLD -D__TOOLCHAIN_LLVM__  -flto=thin   -v -mcpu=snitch -mcmodel=medany -ffast-math -fno-builtin-printf -fno-common -ffunction-sections -Wextra -static -mllvm -enable-misched=false -mno-relax -fopenmp -menable-experimental-extensions -o CMakeFiles/cmTC_baaf5.dir/CMakeCXXCompilerABI.cpp.o -c /usr/pack/cmake-3.18.1-kgf/share/cmake-3.18/Modules/CMakeCXXCompilerABI.cpp
+clang version 12.0.1 (/home/builder/llvm-project/clang d2f0eff9be1f58bb186499e2055eb6888ce88dcc)
+Target: riscv32-unknown-unknown-elf
+Thread model: posix
+InstalledDir: /usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin
+ (in-process)
+ "/usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin/clang-12" -cc1 -triple riscv32-unknown-unknown-elf -emit-llvm-bc -flto=thin -flto-unit -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -static-define -mrelocation-model static -mframe-pointer=all -menable-no-infs -menable-no-nans -menable-unsafe-fp-math -fno-signed-zeros -mreassociate -freciprocal-math -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -nostdsysteminc -mcmodel=medium -target-cpu snitch -target-feature +m -target-feature +a -target-feature +f -target-feature +d -target-feature +experimental-zfh -target-feature +xfrep -target-feature +xssr -target-feature +xdma -target-feature +xfalthalf -target-feature +xfquarter -target-feature +xfaltquarter -target-feature +xfvecsingle -target-feature +xfvechalf -target-feature +xfvecalthalf -target-feature +xfvecquarter -target-feature +xfvecaltquarter -target-feature +xfauxhalf -target-feature +xfauxalthalf -target-feature +xfauxquarter -target-feature +xfauxaltquarter -target-feature +xfauxvecsingle -target-feature +xfauxvechalf -target-feature +xfauxvecalthalf -target-feature +xfauxvecquarter -target-feature +xfauxvecaltquarter -target-feature +xfexpauxvechalf -target-feature +xfexpauxvecalthalf -target-feature +xfexpauxvecquarter -target-feature +xfexpauxvecaltquarter -target-feature -64bit -target-feature -relax -target-feature -save-restore -target-abi ilp32d -msmall-data-limit 8 -fno-split-dwarf-inlining -debugger-tuning=gdb -v -ffunction-sections -resource-dir /usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/lib/clang/12.0.1 -D __LINK_LLD -D __TOOLCHAIN_LLVM__ -c-isystem /usr/scratch/kneiff/paulsc/opt/verilator/share/verilator/include/vltstd/ -c-isystem /usr/scratch/kneiff/paulsc/opt/verilator/share/verilator/include/ -c-isystem /usr/scratch/kneiff/paulsc/opt/mkl/include/ -c-isystem . -c-isystem /usr/pack/gcc-9.2.0-af/include -cxx-isystem /usr/scratch/kneiff/paulsc/opt/verilator/share/verilator/include/vltstd/ -cxx-isystem /usr/scratch/kneiff/paulsc/opt/verilator/share/verilator/include/ -cxx-isystem /usr/scratch/kneiff/paulsc/opt/mkl/include/ -cxx-isystem . -cxx-isystem . -objc-isystem /usr/scratch/kneiff/paulsc/opt/verilator/share/verilator/include/vltstd/ -objc-isystem /usr/scratch/kneiff/paulsc/opt/verilator/share/verilator/include/ -objc-isystem /usr/scratch/kneiff/paulsc/opt/mkl/include/ -objc-isystem . -objc-isystem . -internal-isystem /usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin/../riscv32-unknown-elf/include -Wextra -fdeprecated-macro -fdebug-compilation-dir /usr/scratch/badile01/bsc22f7/snitch/sw/project/example_kernel/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fopenmp -fopenmp-cuda-parallel-target-regions -fno-builtin-printf -fno-signed-char -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -mllvm -enable-misched=false -faddrsig -o CMakeFiles/cmTC_baaf5.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/pack/cmake-3.18.1-kgf/share/cmake-3.18/Modules/CMakeCXXCompilerABI.cpp
+clang -cc1 version 12.0.1 based upon LLVM 12.0.1-0 default target riscv32-unknown-elf
+ignoring duplicate directory "."
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/scratch/kneiff/paulsc/opt/verilator/share/verilator/include/vltstd
+ /usr/scratch/kneiff/paulsc/opt/verilator/share/verilator/include
+ /usr/scratch/kneiff/paulsc/opt/mkl/include
+ .
+ /usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin/../riscv32-unknown-elf/include
+ /usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/lib/clang/12.0.1/include
+End of search list.
+Linking CXX executable cmTC_baaf5
+/usr/pack/cmake-3.18.1-kgf/bin/cmake -E cmake_link_script CMakeFiles/cmTC_baaf5.dir/link.txt --verbose=1
+/usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin/riscv32-unknown-elf-clang++ -flto=thin  -v -mcpu=snitch -nostartfiles -fuse-ld=lld -Wl,--image-base=0x80000000 -static -Wl,-z,norelro -Wl,--gc-sections -Wl,--no-relax CMakeFiles/cmTC_baaf5.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_baaf5  -lm 
+clang version 12.0.1 (/home/builder/llvm-project/clang d2f0eff9be1f58bb186499e2055eb6888ce88dcc)
+Target: riscv32-unknown-unknown-elf
+Thread model: posix
+InstalledDir: /usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin
+ "/usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin/ld.lld" -m elf32lriscv -plugin-opt=mcpu=snitch -plugin-opt=thinlto -L/usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin/../riscv32-unknown-elf/lib --image-base=0x80000000 -z norelro --gc-sections --no-relax CMakeFiles/cmTC_baaf5.dir/CMakeCXXCompilerABI.cpp.o -lm -lstdc++ --start-group -lc -lgloss --end-group /usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/lib/clang/12.0.1/lib/libclang_rt.builtins-riscv32.a -o cmTC_baaf5
+ld.lld: error: unable to find library -lstdc++
+clang-12: error: ld command failed with exit code 1 (use -v to see invocation)
+gmake[1]: *** [cmTC_baaf5] Error 1
+gmake[1]: Leaving directory `/usr/scratch/badile01/bsc22f7/snitch/sw/project/example_kernel/build/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_baaf5/fast] Error 2
+
+
+
+
+Determining if the CXX compiler works failed with the following output:
+Change Dir: /home/bsc22f7/scratch/snitch/sw/project/example_kernel/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_b5870/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b5870.dir/build.make CMakeFiles/cmTC_b5870.dir/build
+gmake[1]: Entering directory `/usr/scratch/badile01/bsc22f7/snitch/sw/project/example_kernel/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b5870.dir/testCXXCompiler.cxx.o
+/usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin/riscv32-unknown-elf-clang++ -D__LINK_LLD -D__TOOLCHAIN_LLVM__  -flto=thin -mcpu=snitch -mcmodel=medany -ffast-math -fno-builtin-printf -fno-common -ffunction-sections -Wextra -static -mllvm -enable-misched=false -mno-relax -fopenmp -menable-experimental-extensions -o CMakeFiles/cmTC_b5870.dir/testCXXCompiler.cxx.o -c /home/bsc22f7/scratch/snitch/sw/project/example_kernel/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_b5870
+/usr/pack/cmake-3.18.1-kgf/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b5870.dir/link.txt --verbose=1
+/usr/pack/riscv-1.0-kgf/pulp-llvm-0.12.0/bin/riscv32-unknown-elf-clang++ -flto=thin -mcpu=snitch -nostartfiles -fuse-ld=lld -Wl,--image-base=0x80000000 -static -Wl,-z,norelro -Wl,--gc-sections -Wl,--no-relax CMakeFiles/cmTC_b5870.dir/testCXXCompiler.cxx.o -o cmTC_b5870  -lm 
+ld.lld: error: unable to find library -lstdc++
+clang-12: error: ld command failed with exit code 1 (use -v to see invocation)
+gmake[1]: *** [cmTC_b5870] Error 1
+gmake[1]: Leaving directory `/usr/scratch/badile01/bsc22f7/snitch/sw/project/example_kernel/build/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_b5870/fast] Error 2
+
+
+

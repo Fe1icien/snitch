@@ -16,7 +16,7 @@ void kernel(double *a, double *b, double *c, uint32_t size){
 		asm volatile(
 			"fld    ft0,0(%[a0]) \n"
 	        "fld    ft1,0(%[b0]) \n"
-	        "fmul   fs0, ft0, ft1 \n"			//or "fmadd.d    fs0, ft0, ft1, fs0 \n" ??
+	        "fmul.d   fs0, ft0, ft1 \n"			//or "fmadd.d    fs0, ft0, ft1, fs0 \n" ??
 	        "fsd    fs0,0(%[c0]) \n"
 	        :
 	        :	[ a0 ] "r"(a[i]),
