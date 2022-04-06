@@ -44,33 +44,54 @@ void polar_ssr(double *a, double *c, uint32_t size){
     register volatile double ft1 asm("ft1");
 	asm volatile("" : "=f"(ft0), "=f"(ft1));
 
-    snrt_ssr_loop_2d(SNRT_SSR_DM0, size / 2, size / 2, 8, 8);
-    snrt_ssr_loop_2d(SNRT_SSR_DM1, size / 2, size / 2, 8, 8);
-    snrt_ssr_read(SNRT_SSR_DM0, SNRT_SSR_2D, a);
-    snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_2D, a);
+    snrt_ssr_loop_1d(SNRT_SSR_DM0, size, 8);
+    snrt_ssr_loop_1d(SNRT_SSR_DM1, size, 8);
+    snrt_ssr_read(SNRT_SSR_DM0, SNRT_SSR_1D, a);
+    snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_1D, a);
 	snrt_ssr_enable();
 
-	for(uint32_t  i = 0; i < size; i += 2){
+	for(uint32_t  i = 0; i < size; i += 2){		//magnitude
 		register double c0 = c[i];
-		register double c0 = c[i + 1];
 		asm volatile(
-            "fmul.d ft0, ft0, ft1 \n"
-            "fmul.d ft0, ft0, ft1 \n"
-			"fmadd.d %[c0], ft0, ft1, 0 \n"
+            "fmul.d ft3, ft0, ft1 \n"
+            "fmul.d ft4, ft0, ft1 \n"
+			"fadd.d ft5, ft0, ft1 \n"
+			"fsqrt %[c0], ft5 \n"
 			:	[ c0 ] "+f"(c0)
 			:
-			:	"ft0","ft1");
-	}
+			:	"ft0","ft1","ft3","ft4","ft5");
 
+		c[i] = c0;
+	}
 
 	snrt_ssr_disable();
 
+
+    snrt_ssr_loop_1d(SNRT_SSR_DM0, size / 2, 16);
+    snrt_ssr_loop_1d(SNRT_SSR_DM1, size / 2, 16);
+    snrt_ssr_read(SNRT_SSR_DM0, SNRT_SSR_1D, a);
+    snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_1D, &a[1]);
+	snrt_ssr_enable();
+
+	for(uint32_t  i = 0; i < size; i += 2){		//angle
+		register double c0 = c[i];
+		asm volatile(
+            "fmul.d ft3, ft0, ft1 \n"
+            "fmul.d ft4, ft0, ft1 \n"
+			"fadd.d ft5, ft0, ft1 \n"
+			"fsqrt %[c0], ft5 \n"
+			:	[ c0 ] "+f"(c0)
+			:
+			:	"ft0","ft1","ft3","ft4","ft5");
+
+		c[i] = c0;
+	}
 
 
 }
 
 
-void polar_ssr_frep(double *a, double *c, uint32_t size){
+void polar_ssr_frep(double *a, double *c, uint32_t size){		
 
 }
 
