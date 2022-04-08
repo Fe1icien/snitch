@@ -73,16 +73,16 @@ void polar_ssr(double *a, double *c, uint32_t size){
     snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_1D, &a[1]);
 	snrt_ssr_enable();
 
+
+	
 	for(uint32_t  i = 0; i < size; i += 2){		//angle
-		register double c0 = c[i];
+		register double d0;
 		asm volatile(
-            "fmul.d ft3, ft0, ft1 \n"
-            "fmul.d ft4, ft0, ft1 \n"
-			"fadd.d ft5, ft0, ft1 \n"
-			"fsqrt %[c0], ft5 \n"
-			:	[ c0 ] "+f"(c0)
+            "fdiv.d %[d0], ft0, ft1 \n"
+			:	[ d0 ] "+f"(d0)
 			:
-			:	"ft0","ft1","ft3","ft4","ft5");
+			:	"ft0","ft1");
+		if(d0 )
 
 		c[i] = c0;
 	}
