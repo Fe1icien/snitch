@@ -76,7 +76,25 @@ void polar_ssr(double *a, double *c, uint32_t size){
 
 
 	
-	for(uint32_t  i = 0; i < size; i += 2){		//angle
+	for(uint32_t  i = 0; i < size; i += 2){
+		
+		
+		//new
+		// double div = ft1/ft0
+		
+		// shift right logical
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+				//angle
 		register double c0 = c[i];
 		register double d0 = 1;					//borders
 		register double d1 = 1.6;
