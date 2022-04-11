@@ -12,6 +12,8 @@ if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
     project(snBLAS LANGUAGES C ASM)
     include(SnitchUtilities)
 
+    message(${PROJECT_NAME})
+
     add_compile_options(-O3 -g -ffunction-sections)
 
     # Build the runtime.
@@ -21,7 +23,7 @@ endif()
 include_directories(include)
 include_directories(${SNRUNTIME_INCLUDE_DIRS})
 
-add_snitch_library(snBLAS src/axpy.c)
+add_snitch_library(snBLAS src/axpy.c src/kernel.c)
 
 # Tests
 enable_testing()

@@ -28,7 +28,7 @@ int main(){
 	*/
 
 
-	kernel(ptr_a, ptr_b, ptr_kernel_result, size);
+	kernel_ssr(ptr_a, ptr_b, ptr_kernel_result, size);
 	
 
 
@@ -36,7 +36,7 @@ int main(){
 	uint32_t errors = 0;
 
 	for(int i = 0; i < size; i++){
-		if(fabs(result[i] - kernel_result[i]) < 0.00001){    //rounding to 0.00001 ???
+		if(fabs(result[i] - kernel_result[i]) > 0.00001){    //rounding to 0.00001 ???
 			errors++;
 		}
 	}

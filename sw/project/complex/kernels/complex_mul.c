@@ -1,4 +1,5 @@
-#include <complex_mul.h>
+#include "complex_mul.h"
+#include "snrt.h"
 
 
 void multiplication_baseline(double *a, double *b, double *c, uint32_t size){
@@ -18,8 +19,8 @@ void multiplication_ssr(double *a, double *b, double *c, uint32_t size){
 	asm volatile("" : "=f"(ft0), "=f"(ft1));
 
   
-    snrt_ssr_loop_1d(SNRT_SSR_DM0, size, 8);
-    snrt_ssr_loop_1d(SNRT_SSR_DM1, size, 8);
+    snrt_ssr_loop_1d(SNRT_SSR_DM0, size / 2, 8);
+    snrt_ssr_loop_1d(SNRT_SSR_DM1, size / 2, 8);
     snrt_ssr_read(SNRT_SSR_DM0, SNRT_SSR_1D, a);
     snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_1D, b);
 	snrt_ssr_enable();
@@ -71,59 +72,88 @@ void multiplication_ssr(double *a, double *b, double *c, uint32_t size){
 }
 
 
-void multiplication_ssr_frep(double *a, double *b, double *c, uint32_t size){
+void multiplication_ssr_frep(double *a, double *b, double *c, double *d, double *e, uint32_t size){
 
 	register volatile double ft0 asm("ft0");		
     register volatile double ft1 asm("ft1");
 	asm volatile("" : "=f"(ft0), "=f"(ft1));
 
-  
-    snrt_ssr_loop_1d(SNRT_SSR_DM0, size, 8);
-    snrt_ssr_loop_1d(SNRT_SSR_DM1, size, 8);
-    snrt_ssr_read(SNRT_SSR_DM0, SNRT_SSR_1D, a);
-    snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_1D, b);
-	snrt_ssr_enable();
-													
-	register double c0 = c[i];				//real values
-	asm volatile(
-		"frep.o %[n_frep], 1, 0, 0 \n"
-		"fmul.d ft3, ft0, ft1 \n"
-		"fmul.d ft4, ft0, ft1 \n"
-		"fsub.d %[c0], ft3, ft4 \n"
-		:	[ c0 ] "+f"(c0)
-		:	[ n_frep ] "r"(size / 2)
-		:	"ft0","ft1","ft3","ft4");
-	
-
-	c[i] = c0;
-
-	snrt_ssr_disable();
-
-
-
-	snrt_ssr_loop_1d(SNRT_SSR_DM0, size, 8);
-    snrt_ssr_loop_1d(SNRT_SSR_DM1, size / 2, 16);
+  	//real values
+    snrt_ssr_loop_1d(SNRT_SSR_DM0, size / 2, 8);
+    snrt_ssr_loop_1d(SNRT_SSR_DM1, size / 2, 8);
     snrt_ssr_loop_1d(SNRT_SSR_DM2, size / 2, 16);
     snrt_ssr_read(SNRT_SSR_DM0, SNRT_SSR_1D, a);
-	snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_1D, b);
-	snrt_ssr_read(SNRT_SSR_DM2, SNRT_SSR_1D, &b[1]);
+    snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_1D, b);
+    snrt_ssr_write(SNRT_SSR_DM2, SNRT_SSR_1D, c);
 	snrt_ssr_enable();
-
-				
-	register double c0 = c[i];				//imaginary values
+													
 	asm volatile(
-		"frep.o %[n_frep], 1, 0, 0 \n"
-		"fmul.d ft3, ft0, ft2 \n"
+		"frep.o %[n_frep], 3, 0, 0 \n"
+		"fmul.d ft3, ft0, ft1 \n"
 		"fmul.d ft4, ft0, ft1 \n"
-		"fadd.d %[c0], ft3, ft4 \n"
-		:	[ c0 ] "+f"(c0)
+		"fsub.d ft2, ft3, ft4 \n"
+		:	
 		:	[ n_frep ] "r"(size / 2)
 		:	"ft0","ft1","ft2","ft3","ft4");
 	
-
-	c[i] = c0;
-
 	snrt_ssr_disable();
 
+
+	//imaginary values pt1	
+	snrt_ssr_loop_1d(SNRT_SSR_DM0, size / 2 ,16);
+    snrt_ssr_loop_1d(SNRT_SSR_DM1, size / 2, 16);
+    snrt_ssr_loop_1d(SNRT_SSR_DM2, size / 2, 8);
+    snrt_ssr_read(SNRT_SSR_DM0, SNRT_SSR_1D, a);
+	snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_1D, &b[1]);
+	snrt_ssr_write(SNRT_SSR_DM2, SNRT_SSR_1D, d);
+	snrt_ssr_enable();
+
+	asm volatile(
+		"frep.o %[n_frep], 1, 0, 0 \n"
+		"fmul.d ft2, ft0, ft1 \n"
+		:
+		:	[ n_frep ] "r"(size / 2)
+		:	"ft0","ft1","ft2");
+	
+	snrt_ssr_disable();
+
+
+	//imaginary values pt2
+	snrt_ssr_loop_1d(SNRT_SSR_DM0, size / 2 ,16);
+    snrt_ssr_loop_1d(SNRT_SSR_DM1, size / 2, 16);
+    snrt_ssr_loop_1d(SNRT_SSR_DM2, size / 2, 8);
+    snrt_ssr_read(SNRT_SSR_DM0, SNRT_SSR_1D, &a[1]);
+	snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_1D, b);
+	snrt_ssr_write(SNRT_SSR_DM2, SNRT_SSR_1D, e);
+	snrt_ssr_enable();			
+	
+	asm volatile(
+		"frep.o %[n_frep], 1, 0, 0 \n"
+		"fmul.d ft2, ft0, ft1 \n"
+		:
+		:	[ n_frep ] "r"(size / 2)
+		:	"ft0","ft1","ft2");
+	
+	snrt_ssr_disable();
+
+
+	//imaginary values pt3
+	snrt_ssr_loop_1d(SNRT_SSR_DM0, size / 2 ,8);
+    snrt_ssr_loop_1d(SNRT_SSR_DM1, size / 2, 8);
+    snrt_ssr_loop_1d(SNRT_SSR_DM2, size / 2, 16);
+    snrt_ssr_read(SNRT_SSR_DM0, SNRT_SSR_1D, d);
+	snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_1D, e);
+	snrt_ssr_write(SNRT_SSR_DM2, SNRT_SSR_1D, &c[1]);
+	snrt_ssr_enable();			
+	
+	asm volatile(
+		"frep.o %[n_frep], 1, 0, 0 \n"
+		"fadd.d ft2, ft0, ft1 \n"
+		:
+		:	[ n_frep ] "r"(size / 2)
+		:	"ft0","ft1","ft2");
+	
+	snrt_ssr_disable();
 }
+
 

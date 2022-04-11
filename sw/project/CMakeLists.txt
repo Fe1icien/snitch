@@ -20,9 +20,15 @@ include_directories(include)
 include_directories(${SNRUNTIME_INCLUDE_DIRS})
 
 
-add_snitch_library(bubu example_kernel/kernel.c)
+# add_snitch_library(bubu example_kernel/kernel.c)
+
+# file(GLOB SOURCES complex/kernels/*)
+# add_snitch_library(complex SHARED ${SOURCES})
+add_snitch_library(complex complex/kernels/complex_add.c complex/kernels/complex_mul.c)
 
 # Tests
 enable_testing()
-link_libraries(bubu)
-add_snitch_test_executable(test example_kernel/main.c)
+link_libraries(complex)
+# link_libraries(bubu)
+# add_snitch_test_executable(test example_kernel/main.c)
+add_snitch_test_executable(test complex/complex_main.c)

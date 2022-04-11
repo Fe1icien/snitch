@@ -1,13 +1,14 @@
-#include <complex_polar.h>
+#include "complex_polar.h"
 #include <math.h>
+#include "snrt.h"
 
 
 
 void polar_baseline(double *a, double *c, uint32_t size){
 
 	for(uint32_t  i = 0; i < size; i += 2){
-		c[i] = sqrt(a[i]*a[i]+ a[i+1]*a[i+1])
-		c[i + 1] = atan(a[i+1] / a[i])
+		c[i] = sqrt(a[i]*a[i]+ a[i+1]*a[i+1]);
+		c[i + 1] = atan(a[i+1] / a[i]);
 
 	}
 
@@ -77,26 +78,37 @@ void polar_ssr(double *a, double *c, uint32_t size){
 	
 	for(uint32_t  i = 0; i < size; i += 2){		//angle
 		register double c0 = c[i];
-		register double d0 = 1;
+		register double d0 = 1;					//borders
 		register double d1 = 1.6;
 		register double d2 = 3.6;
 		register double d3 = 7.3;
 		register double d4 = 23;
 
-		register double d5 = 0.07765;
+		register double d5 = 0.07765;			//1st
 		register double d6 = 0.2874;
 		register double d7 = 0.9953;
 		
-		register double d8 = 0.954;
+		register double d8 = 0.954;				//2nd
 		register double d9 = 0.337;
 		register double d10 = 0.23;
 		register double d11 = 1.4;
 
-		register double d12 = 1.2036;
+		register double d12 = 1.2036;			//3rd
 		register double d13 = 0.1288;
 		register double d14 = 2.6;
 		register double d15 = 2.73;
 		register double d16 = 0.045;
+
+		register double d17 = 1.37;				//4th
+		register double d18 = 0.04;
+		register double d19 = 5.2;
+
+		register double d20 = 1.4876;			//5th
+		register double d21 = 0.0069;
+		register double d22 = 12;
+
+		register double d23 = 1.5707;			//6th
+
 
 		asm volatile(
             "fdiv.d ft3, ft0, ft1 \n"
@@ -106,6 +118,7 @@ void polar_ssr(double *a, double *c, uint32_t size){
 			"fmul.d ft5, ft3, ft4 \n"  //x^2
 			"fmul.d ft6, ft3, ft5 \n"	//x^3
 			"fmul.d ft7, ft5, ft6 \n"	//x^5
+
 			"blt %[d0], ft3, 24 \n"
 			"fmul.d ft8, %[d5], ft7 \n"	
 			"fmul.d ft9, %[d6], ft6 \n"	
@@ -113,6 +126,7 @@ void polar_ssr(double *a, double *c, uint32_t size){
 			"fsub.d ft11, ft8, ft9 \n"
 			"fadd.d ft15, ft10, ft11 \n"	//ft15 = result
 			"jal x0, ??"					//go to end
+
 			"blt %[d1], ft3, 36 \n"	
 			"fadd.d ft8, %[d8], x0 \n"		//0.
 			"fsub.d ft9, ft3, %[d11] \n"
@@ -122,21 +136,22 @@ void polar_ssr(double *a, double *c, uint32_t size){
 			"fmul.d ft13, %[d10], ft12 \n"	//2.
 			"fadd.d ft14, ft8, ft10 \n"
 			"fsub.d ft15, ft14, ft13 \n"	//ft15 = result
-			"jal x0, ??"
-
-
+			"j ??"
 
 			
 			"blt %[d2], ft3, 36 \n"	
-			"fadd.d ft8, %[d8], x0 \n"		//0.
-			"fsub.d ft9, ft3, %[d11] \n"
+			"fadd.d ft8, %[d14], x0 \n"		//0.
+			"fsub.d ft9, ft3, %[d12] \n"
 			"fmul.d ft10, %[d9], ft9 \n"  	//1.
 			"fadd.d ft11, ft9, x0 \n"
 			"fmul.d ft12, ft11, ft9 \n"	
 			"fmul.d ft13, %[d10], ft12 \n"	//2.
 			"fadd.d ft14, ft8, ft10 \n"
 			"fsub.d ft15, ft14, ft13 \n"	//ft15 = result
-			"jal x0, ??"
+			"j ??"
+
+
+
 
 
 
