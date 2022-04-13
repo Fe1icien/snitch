@@ -19,8 +19,8 @@ int main(){
 	double add_result [size];
 	double mul_result [size];
 	double polar_result [size];
-	double result_d [size / 2];
-	double result_e [size / 2];
+	double result_d [(size / 2) + 1];
+	double result_e [(size / 2) + 1];
 
 	// double* ptr_add_result = (double*) add_result;
 	// double* ptr_mul_result = (double*) mul_result;
