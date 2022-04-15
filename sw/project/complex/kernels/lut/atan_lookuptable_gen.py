@@ -21,6 +21,8 @@ lut_str += 'static const double lookup[] = { \n'
 
 i = -40
 j = 1
+k = 0
+
 while(i < -10):
     lut_str += str(math.atan(i)) + ', '
     if(j == 10):
@@ -28,6 +30,8 @@ while(i < -10):
         j = 0
     j += 1
     i += 1
+    k += 1
+print(k)
 while(i < -5):
     lut_str += str(math.atan(i)) + ', '
     if(j == 10):
@@ -35,6 +39,8 @@ while(i < -5):
         j = 0
     j += 1
     i += 0.5
+    k += 1
+print(k)
 while(i < -1.6):
     lut_str += str(math.atan(i)) + ', '
     if(j == 10):
@@ -42,6 +48,8 @@ while(i < -1.6):
         j = 0
     j += 1
     i += 0.1
+    k += 1
+print(k)
 while(i < 1.5):
     lut_str += str(math.atan(i)) + ', '
     if(j == 10):
@@ -49,6 +57,8 @@ while(i < 1.5):
         j = 0
     j += 1
     i += 0.01
+    k += 1
+print(k)
 while(i < 5):
     lut_str += str(math.atan(i)) + ', '
     if(j == 10):
@@ -56,6 +66,8 @@ while(i < 5):
         j = 0
     j += 1
     i += 0.1
+    k += 1
+print(k)
 while(i < 10):
     lut_str += str(math.atan(i)) + ', '
     if(j == 10):
@@ -63,6 +75,8 @@ while(i < 10):
         j = 0
     j += 1
     i += 0.5
+    k += 1
+print(k)
 while(i < 40):
     lut_str += str(math.atan(i)) + ', '
     if(j == 10):
@@ -70,8 +84,9 @@ while(i < 40):
         j = 0
     j += 1
     i += 1
+    k += 1
 lut_str += str(pi/2) + '\n'
+k += 1
 lut_str += '}; \n'
-
-with file.open('w') as f:
-    f.write(lut_str)
+# with file.open('w') as f:
+#     f.write(lut_str)
