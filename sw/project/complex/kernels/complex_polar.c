@@ -38,15 +38,15 @@ void polar_ssr(double *a, double *c, uint32_t size){
 			:	"ft0","ft1","ft3","ft4",);
 
 		if(b0 < 1){
-			d0 = (int) ((b[i] * 50) + 0.5);
+			d0 = (int) ((b0 * 50) + 0.5);
 			c[i] = lookup[d0];
 		}
 		else if(b0 < 10){
-			d0 = (int) ((b[i] * 10) + 0.5);
+			d0 = (int) ((b0 * 10) + 0.5);
 			c[i] = lookup[d0 - 10 + 50];
 		}
 		else if(b0 < 50){
-			d0 = (int) (b[i] + 0.5);
+			d0 = (int) (b0 + 0.5);
 			c[i] = lookup[d0 - 10 + 141];
 		}
 
