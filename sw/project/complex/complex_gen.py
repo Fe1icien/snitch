@@ -66,9 +66,12 @@ def angle(a):
     result = torch.zeros(length)
     for i in range(length):
         div = a[0][2*i + 1] / a[0][2*i]
-        result[i] = math.atan(div)         #3rd quadrant will give positive angle (like 1. and 2.) but 4th will give negative angles
+        result[i] = math.atan(div)         
         if( a[0][2*i] < 0):
-            result[i] += math.pi 
+            if(result[i] > 0):
+                result[i] -= math.pi
+            elif(result[i] <= 0):
+                result[i] += math.pi
     return result
 
 

@@ -3,7 +3,7 @@
 
 
 void addition_baseline(double *a, double *b, double *c, uint32_t size){
-    
+	
     for(uint32_t  i = 0; i < size; i++){
 	    c[i] = a[i] + b[i];
 	}
@@ -28,7 +28,7 @@ void addition_ssr(double *a, double *b, double *c, uint32_t size){
 			"fadd.d %[c0], ft0, ft1 \n"
 			:	[ c0 ] "+f"(c0)
 			:
-			:	"ft0");
+			:	"ft0","ft1");
 		c[i] = c0;
 	}
 	

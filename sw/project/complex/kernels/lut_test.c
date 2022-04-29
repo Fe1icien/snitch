@@ -46,57 +46,57 @@ int main(){
 	// }	
 
 
-	for(uint32_t  i = 0; i < 10; i++){		
+	// for(uint32_t  i = 0; i < 10; i++){		
 
 
-		d = b / a;
-		f = atan(d);
+	// 	d = b / a;
+	// 	f = atan(d);
 
-		if(d < -10){
-			e = (int) (d - 0.5);
-			c = lookup[e + 40];
-		}
-		else if(d < -5){
-			e = (int) ((d * 2) - 0.5);
-			c = lookup[e + 50];
-		}
-		else if(d < -1.5){
+	// 	if(d < -10){
+	// 		e = (int) (d - 0.5);
+	// 		c = lookup[e + 40];
+	// 	}
+	// 	else if(d < -5){
+	// 		e = (int) ((d * 2) - 0.5);
+	// 		c = lookup[e + 50];
+	// 	}
+	// 	else if(d < -1.5){
 
-			e = (int) ((d * 10) - 0.5);
-			c = lookup[e + 90];
-		}
-		else if(d < 0){
-			e = (int) ((d * 100) - 0.5);
-			c = lookup[e + 225];
-		}
-		else if(d < 1.5){
-			e = (int) ((d * 100) + 0.5);
-			c = lookup[e + 225];
-		}
-		else if(d < 5){
-			e = (int) ((d * 10) + 0.5);
-			c = lookup[e + 359];
-		}
-		else if(d < 10){
-			e = (int) ((d * 2) + 0.5);
-			c = lookup[e + 400];
-		}
-		else if(d < 40){
-			e = (int) (d + 0.5);
-			c = lookup[e + 410];
-		}
-		else{
-			c = lookup[451];
-		}
+	// 		e = (int) ((d * 10) - 0.5);
+	// 		c = lookup[e + 90];
+	// 	}
+	// 	else if(d < 0){
+	// 		e = (int) ((d * 100) - 0.5);
+	// 		c = lookup[e + 225];
+	// 	}
+	// 	else if(d < 1.5){
+	// 		e = (int) ((d * 100) + 0.5);
+	// 		c = lookup[e + 225];
+	// 	}
+	// 	else if(d < 5){
+	// 		e = (int) ((d * 10) + 0.5);
+	// 		c = lookup[e + 359];
+	// 	}
+	// 	else if(d < 10){
+	// 		e = (int) ((d * 2) + 0.5);
+	// 		c = lookup[e + 400];
+	// 	}
+	// 	else if(d < 40){
+	// 		e = (int) (d + 0.5);
+	// 		c = lookup[e + 410];
+	// 	}
+	// 	else{
+	// 		c = lookup[451];
+	// 	}
 
-		printf("%f\n", c);
-		printf("%f\n", f);
-		printf("\n");
+	// 	printf("%f\n", c);
+	// 	printf("%f\n", f);
+	// 	printf("\n");
 
-		a += 0.5;
-	 	b += 0.33;
-	}
-
+	// 	a += 0.5;
+	//  	b += 0.33;
+	//}
+	printf("%f\n", lookup[329]);
 
     return 0;
 }

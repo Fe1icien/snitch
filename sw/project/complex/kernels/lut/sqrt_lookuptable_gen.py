@@ -5,14 +5,14 @@ import pathlib
 # 1-10  0.1
 # 10-.. 1
 
-file_path = pathlib.Path('C:\\Users\\ndozi\\bachelor\\snitch\\sw\\project\\complex\\kernels\\lut')
+file_path = pathlib.Path('/home/bsc22f7/scratch/snitch/sw/project/complex/kernels/lut')
 file = file_path / 'sqrt_lookuptable.h'
 
 
 lut_str = ''
 lut_str += '#include <stdint.h>\n\n'
 lut_str += '//size = \n\n'
-lut_str += 'static const double lookup[] = { \n'
+lut_str += 'static const double lookup2[] = { \n'
 
 i = 0
 j = 1

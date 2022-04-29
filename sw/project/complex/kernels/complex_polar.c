@@ -2,6 +2,7 @@
 #include <math.h>
 #include "snrt.h"
 #include "lut/sqrt_lookuptable.h"
+#include "lut/atan_lookuptable.h"
 
 
 void polar_baseline(double *a, double *c, uint32_t size){
@@ -9,6 +10,14 @@ void polar_baseline(double *a, double *c, uint32_t size){
 	for(uint32_t  i = 0; i < size; i += 2){
 		c[i] = sqrt(a[i]*a[i]+ a[i+1]*a[i+1]);
 		c[i + 1] = atan(a[i+1] / a[i]);
+		if(a[i] < 0){
+			if(c[i + 1] > 0){
+				c[i + 1] -= 3.14159265359;
+			}
+			else{
+				c[i + 1] += 3.14159265359;
+			}
+		}
 
 	}
 }
@@ -32,23 +41,25 @@ void polar_ssr(double *a, double *c, double *d, uint32_t size){
 		asm volatile(
             "fmul.d ft3, ft0, ft1 \n"
             "fmul.d ft4, ft0, ft1 \n"
-			"fadd.d ft5, ft3, ft4 \n"
+			"fadd.d %[b0], ft3, ft4 \n"
 			:	[ b0 ] "+f"(b0)
 			:
-			:	"ft0","ft1","ft3","ft4",);
+			:	"ft0","ft1","ft3","ft4");
 
 		if(b0 < 1){
 			d0 = (int) ((b0 * 50) + 0.5);
-			c[i] = lookup[d0];
+			c[i] = lookup2[d0];
 		}
 		else if(b0 < 10){
 			d0 = (int) ((b0 * 10) + 0.5);
-			c[i] = lookup[d0 - 10 + 50];
+			c[i] = lookup2[d0 - 10 + 50];
 		}
 		else if(b0 < 50){
 			d0 = (int) (b0 + 0.5);
-			c[i] = lookup[d0 - 10 + 141];
+			c[i] = lookup2[d0 - 10 + 141];
 		}
+
+
 
 		// b[i] = b0;
 		// if(b[i] < 1){
@@ -68,9 +79,9 @@ void polar_ssr(double *a, double *c, double *d, uint32_t size){
 	snrt_ssr_disable();
 
     snrt_ssr_loop_1d(SNRT_SSR_DM0, size / 2, 16);
-    snrt_ssr_loop_1d(SNRT_SSR_DM1, size / 2, 16);
+    snrt_ssr_loop_1d(SNRT_SSR_DM1, size, 8);
     snrt_ssr_read(SNRT_SSR_DM0, SNRT_SSR_1D, a);
-    snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_1D, &a[1]);
+    snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_1D, a);
 	snrt_ssr_enable();
 
 
@@ -78,13 +89,15 @@ void polar_ssr(double *a, double *c, double *d, uint32_t size){
 		
 		register double d0; // = d[i];
 		register double d1; // = d[i+1];
+		register double d2 = 0;
 		asm volatile(
+			"fadd.d ft3, ft1, %[d2] \n"
+			"fabs.d ft4, ft3 \n"
 			"fdiv.d %[d0], ft1, ft0 \n"
-			"fabs.d ft3, %[d0] \n"
-			"fdiv.d %[d1], %[d0], ft3 \n"
-			:	[ d0 ] "+f"(d0) , [ d1 ] "+f"(d1)
+			"fdiv.d %[d1], ft3, ft4 \n"
+			:	[ d0 ] "+f"(d0) , [ d1 ] "+f"(d1) , [ d2 ] "+f"(d2)
 			:
-			:	"ft0","ft1","ft3");
+			:	"ft0","ft1","ft3","ft4");
 
 		d[i] = d0;
 		d[i+1] = d1;	
@@ -93,141 +106,175 @@ void polar_ssr(double *a, double *c, double *d, uint32_t size){
 	snrt_ssr_disable();	
 
 
-	for(uint32_t  i = 0; i < size; i += 2){		//magnitude
-		register uint32_t e0; 
-		if(d[i] < -10){
+	for(uint32_t  i = 0; i < size; i += 2){		//angle
+		register uint32_t e0;
+		if(d[i] < -40){
+			c[i + 1] = lookup[451];
+		}
+		else if(d[i] < -10){
 			e0 = (int) (d[i] - 0.5);
-			c[i] = lookup[e0 + 40];
+			c[i + 1] = lookup[e0 + 40];
 		}
 		else if(d[i] < -5){
 			e0 = (int) ((d[i] * 2) - 0.5);
-			c[i] = lookup[e0 + 50];
+			c[i + 1] = lookup[e0 + 50];
 		}
 		else if(d[i] < -1.5){
 			e0 = (int) ((d[i] * 10) - 0.5);
-			c[i] = lookup[e0 + 90];
+			c[i + 1] = lookup[e0 + 90];
 		}
 		else if(d[i] < 0){
 			e0 = (int) ((d[i] * 100) - 0.5);
-			c[i] = lookup[e0 + 225];
+			c[i + 1] = lookup[e0 + 225];
 		}
 		else if(d[i] < 1.5){
 			e0 = (int) ((d[i] * 100) + 0.5);
-			c[i] = lookup[e0 + 225];
+			c[i + 1] = lookup[e0 + 225];
 		}
 		else if(d[i] < 5){
 			e0 = (int) ((d[i] * 10) + 0.5);
-			c[i] = lookup[e0 + 359];
+			c[i + 1] = lookup[e0 + 359];
 		}
 		else if(d[i] < 10){
 			e0 = (int) ((d[i] * 2) + 0.5);
-			c[i] = lookup[e0 + 400];
+			c[i + 1] = lookup[e0 + 400];
 		}
 		else if(d[i] < 40){
 			e0 = (int) (d[i] + 0.5);
-			c[i] = lookup[e0 + 410];
+			c[i + 1] = lookup[e0 + 410];
 		}
 		else{
-			c[i] = lookup[451];
+			c[i + 1] = lookup[451];
+		}
+
+		if(d[i+1] < 0){
+			if(c[i + 1] > 0){
+				c[i + 1] -= (2 * lookup[451]);
+			}
+			else{
+				c[i + 1] += (2 * lookup[451]);
+			}
+		}
+	}
+}
+
+
+void polar_ssr_frep(double *a, double *c, double *d, double *e, uint32_t size){		
+
+	register volatile double ft0 asm("ft0");		
+    register volatile double ft1 asm("ft1");
+	asm volatile("" : "=f"(ft0), "=f"(ft1));
+
+	snrt_ssr_loop_1d(SNRT_SSR_DM0, size, 8);
+    snrt_ssr_loop_1d(SNRT_SSR_DM1, size, 8);
+    snrt_ssr_loop_1d(SNRT_SSR_DM2, size / 2, 8);
+    snrt_ssr_read(SNRT_SSR_DM0, SNRT_SSR_1D, a);
+    snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_1D, a);
+    snrt_ssr_write(SNRT_SSR_DM2, SNRT_SSR_1D, e);
+	snrt_ssr_enable();
+
+		
+	asm volatile(								//magnitude
+		"frep.o %[n_frep], 3, 0, 0 \n"
+        "fmul.d ft3, ft0, ft1 \n"
+        "fmul.d ft4, ft0, ft1 \n"
+		"fadd.d ft2, ft3, ft4 \n"
+		:	
+		:	[ n_frep ] "r"(size / 2)
+		:	"ft0","ft1","ft2","ft3","ft4");
+	
+
+	for(uint32_t  i = 0; i < size; i += 2){
+		register uint32_t d0; 
+		if(e[i / 2] < 1){
+			d0 = (int) ((e[i / 2] * 50) + 0.5);
+			c[i] = lookup2[d0];
+		}
+		else if(e[i / 2] < 10){
+			d0 = (int) ((e[i / 2] * 10) + 0.5);
+			c[i] = lookup2[d0 - 10 + 50];
+			}
+		else if(e[i / 2] < 50){
+			d0 = (int) (e[i / 2] + 0.5);
+			c[i] = lookup2[d0 - 10 + 141];
 		}
 	}
 	
-		
-		
-	// 			//angle
-	// 	register double c0 = c[i];
-	// 	register double d0 = 1;					//borders
-	// 	register double d1 = 1.6;
-	// 	register double d2 = 3.6;
-	// 	register double d3 = 7.3;
-	// 	register double d4 = 23;
+	snrt_ssr_disable();
 
-	// 	register double d5 = 0.07765;			//1st
-	// 	register double d6 = 0.2874;
-	// 	register double d7 = 0.9953;
-		
-	// 	register double d8 = 0.954;				//2nd
-	// 	register double d9 = 0.337;
-	// 	register double d10 = 0.23;
-	// 	register double d11 = 1.4;
+	snrt_ssr_loop_1d(SNRT_SSR_DM0, size / 2, 16);
+    snrt_ssr_loop_1d(SNRT_SSR_DM1, size, 8);
+    snrt_ssr_loop_1d(SNRT_SSR_DM2, size, 8);
+    snrt_ssr_read(SNRT_SSR_DM0, SNRT_SSR_1D, a);
+    snrt_ssr_read(SNRT_SSR_DM1, SNRT_SSR_1D, a);
+    snrt_ssr_write(SNRT_SSR_DM2, SNRT_SSR_1D, d);
+	snrt_ssr_enable();
 
-	// 	register double d12 = 1.2036;			//3rd
-	// 	register double d13 = 0.1288;
-	// 	register double d14 = 2.6;
-	// 	register double d15 = 2.73;
-	// 	register double d16 = 0.045;
-
-	// 	register double d17 = 1.37;				//4th
-	// 	register double d18 = 0.04;
-	// 	register double d19 = 5.2;
-
-	// 	register double d20 = 1.4876;			//5th
-	// 	register double d21 = 0.0069;
-	// 	register double d22 = 12;
-
-	// 	register double d23 = 1.5707;			//6th
+	
+	register double d2 = 0;
+	asm volatile(							//angle
+		"frep.o %[n_frep], 4, 0, 0 \n"
+		"fadd.d ft3, ft1, %[d2] \n"
+		"fabs.d ft4, ft3 \n"
+		"fdiv.d ft2, ft1, ft0 \n"
+		"fdiv.d ft2, ft3, ft4 \n"
+		:	[ d2 ] "+f"(d2)
+		:	[ n_frep ] "r"(size / 2)
+		:	"ft0","ft1","ft2","ft3","ft4");
+	
+	snrt_ssr_disable();	
 
 
-	// 	asm volatile(
-    //         "fdiv.d ft3, ft0, ft1 \n"
-	// 		"bge ft3, x0, 4 \n"
-	// 		"fsub.d ft3, x0, ft3 \n"
-	// 		"fadd.d ft4, ft3, x0 \n"
-	// 		"fmul.d ft5, ft3, ft4 \n"  //x^2
-	// 		"fmul.d ft6, ft3, ft5 \n"	//x^3
-	// 		"fmul.d ft7, ft5, ft6 \n"	//x^5
+	for(uint32_t  i = 0; i < size; i += 2){		
+		register uint32_t e0;
+		if(d[i] < -40){
+			c[i + 1] = lookup[451];
+		}
+		else if(d[i] < -10){
+			e0 = (int) (d[i] - 0.5);
+			c[i + 1] = lookup[e0 + 40];
+		}
+		else if(d[i] < -5){
+			e0 = (int) ((d[i] * 2) - 0.5);
+			c[i + 1] = lookup[e0 + 50];
+		}
+		else if(d[i] < -1.5){
+			e0 = (int) ((d[i] * 10) - 0.5);
+			c[i + 1] = lookup[e0 + 90];
+		}
+		else if(d[i] < 0){
+			e0 = (int) ((d[i] * 100) - 0.5);
+			c[i + 1] = lookup[e0 + 225];
+		}
+		else if(d[i] < 1.5){
+			e0 = (int) ((d[i] * 100) + 0.5);
+			c[i + 1] = lookup[e0 + 225];
+		}
+		else if(d[i] < 5){
+			e0 = (int) ((d[i] * 10) + 0.5);
+			c[i + 1] = lookup[e0 + 359];
+		}
+		else if(d[i] < 10){
+			e0 = (int) ((d[i] * 2) + 0.5);
+			c[i + 1] = lookup[e0 + 400];
+		}
+		else if(d[i] < 40){
+			e0 = (int) (d[i] + 0.5);
+			c[i + 1] = lookup[e0 + 410];
+		}
+		else{
+			c[i + 1] = lookup[451];
+		}
 
-	// 		"blt %[d0], ft3, 24 \n"
-	// 		"fmul.d ft8, %[d5], ft7 \n"	
-	// 		"fmul.d ft9, %[d6], ft6 \n"	
-	// 		"fmul.d ft10, %[d7], ft4 \n"
-	// 		"fsub.d ft11, ft8, ft9 \n"
-	// 		"fadd.d ft15, ft10, ft11 \n"	//ft15 = result
-	// 		"jal x0, ??"					//go to end
-
-	// 		"blt %[d1], ft3, 36 \n"	
-	// 		"fadd.d ft8, %[d8], x0 \n"		//0.
-	// 		"fsub.d ft9, ft3, %[d11] \n"
-	// 		"fmul.d ft10, %[d9], ft9 \n"  	//1.
-	// 		"fadd.d ft11, ft9, x0 \n"
-	// 		"fmul.d ft12, ft11, ft9 \n"	
-	// 		"fmul.d ft13, %[d10], ft12 \n"	//2.
-	// 		"fadd.d ft14, ft8, ft10 \n"
-	// 		"fsub.d ft15, ft14, ft13 \n"	//ft15 = result
-	// 		"j ??"
-
-			
-	// 		"blt %[d2], ft3, 36 \n"	
-	// 		"fadd.d ft8, %[d14], x0 \n"		//0.
-	// 		"fsub.d ft9, ft3, %[d12] \n"
-	// 		"fmul.d ft10, %[d9], ft9 \n"  	//1.
-	// 		"fadd.d ft11, ft9, x0 \n"
-	// 		"fmul.d ft12, ft11, ft9 \n"	
-	// 		"fmul.d ft13, %[d10], ft12 \n"	//2.
-	// 		"fadd.d ft14, ft8, ft10 \n"
-	// 		"fsub.d ft15, ft14, ft13 \n"	//ft15 = result
-	// 		"j ??"
-
-
-
-
-
-
-
-
-		
-	// 		:	[ c0 ] "+f"(c0)
-	// 		:
-	// 		:	"ft0","ft1","ft3");
-
-	// 	c[i] = c0;
-	// }
-
-
-
-
-void polar_ssr_frep(double *a, double *c, uint32_t size){		
-
+		if(d[i+1] < 0){
+			if(c[i + 1] > 0){
+				c[i + 1] -= (2 * lookup[451]);
+			}
+			else{
+				c[i + 1] += (2 * lookup[451]);
+			}
+		}
+	}
 }
 
 
