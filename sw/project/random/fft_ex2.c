@@ -9,7 +9,7 @@
 double a [] = {0,100,200,300};
 
 uint32_t size = 8;
-double b[8];
+
 
 
 double FFT(double *a, uint32_t size){
@@ -71,16 +71,14 @@ double FFT(double *a, uint32_t size){
 }
 
 
-
 int main(){
 
 
-    
     //printf("%.2f\n", a[2]);
-    //b = FFT(a,size);
-    // for(uint32_t i = 0; i < size; i++){
-    //     printf("%.2f\n", b[i]);
-    // }
-    printf("%.4f + %.4fi", cos(-2*PI/size) , sin(-2*PI/size));
+    double b [] = FFT(a,size);
+    for(uint32_t i = 0; i < size; i++){
+        printf("%.2f\n", b[i]);
+    }
+    //printf("%.4f + %.4fi", cos(-2*PI/size) , sin(-2*PI/size));
     return 0;
 }
