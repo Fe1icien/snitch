@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <complex.h> 
+#include <string.h>
 #define PI 3.14159265358979
 
 
@@ -20,26 +21,27 @@ double* FFT(double *a, uint32_t size){
 
     double evena [4];    // size/2
     double odda [4];     // size/2
-    printf("hihi");
+    //printf("hihi");
     for(uint32_t i = 0; i < 7; i+=4){
         evena[i/2] = a[i];
         evena[i/2 + 1] = a[i+1];
     }
-    printf("huhu");
-    // for(uint32_t i = 2; i < size; i+=4){
-    //     printf("hooohi\n");
-    //     odda[i] = a[i];
-    //     odda[i+1] = a[i+1];
-    // }
-    // for(uint32_t i = 0; i < size; i++){
-    //     printf("%.2f\n", evena[i]);
-    // }
-    // for(uint32_t i = 0; i < size; i++){
-    //     printf("%.2f\n", odda[i]);
-    // }
+    //printf("huhu");
+    for(uint32_t i = 2; i < size; i+=4){
+        //printf("hooohi\n");
+        odda[i/2] = a[i];
+        odda[i/2+1] = a[i+1];
+    }
+    for(uint32_t i = 0; i < size; i++){
+        printf("%.2f\n", evena[i]);
+    }
+    printf("hooohi\n");
+    for(uint32_t i = 0; i < size; i++){
+        printf("%.2f\n", odda[i]);
+    }
     // double even [] = FFT(evena, size/2);
     // double odd [] = FFT(odda, size/2);
-
+    printf("hooohi\n");
 
     // double temp[8];  //size  here complex (have ot adjust others above)
     // double polar[2];
@@ -83,8 +85,8 @@ int main(){
     uint32_t size = 8;
     double input [] = {0,0,100,0,200,0,300,0};
     //printf("%.2f\n", a[2]);
-    double b [size];
-    b = FFT(input,size);
+    double b [8];
+    memcpy(b, FFT(input,size), sizeof(b));
     for(uint32_t i = 0; i < 8; i++){
         printf("%.2f\n", b[i] );
     }
