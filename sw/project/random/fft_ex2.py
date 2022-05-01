@@ -21,13 +21,13 @@ def FFT(f):
     
     return temp
 
-f = [0,100,200,300]
+f = [0,100,200,300,400,500,600,700]
 N = len(f) + 4
-for u in range(N//2):
-     print(u)
-     print(u+N//2)
+# for u in range(N//2):
+#      print(u)
+#      print(u+N//2)
 
-
+print(f[0::2])
 
 
 
