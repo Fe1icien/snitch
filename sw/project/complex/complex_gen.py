@@ -10,7 +10,8 @@ import math
 # with length as number of values
 
 
-length = 4
+length = 64
+
 a = torch.randn(1,length*2)
 b = torch.randn(1,length*2)
 

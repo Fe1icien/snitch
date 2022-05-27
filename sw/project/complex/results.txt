@@ -1,0 +1,134 @@
+ADDITION 
+
+
+
+(size = 20, core1)
+
+baseline:
+
+Performance metrics for section 1 @ (1899, 2124):
+snitch_loads                                     9
+fpss_loads                                       4
+fpss_stores                                      2
+snitch_stores                                    1
+snitch_avg_load_latency                     6.8889
+snitch_occupancy                            0.2124
+snitch_fseq_rel_offloads                    0.1429
+fseq_yield                                     1.0
+fseq_fpu_yield                                 1.0
+fpss_section_latency                             0
+fpss_avg_fpu_latency                           5.0
+fpss_avg_load_latency                          1.0
+fpss_occupancy                              0.0354
+fpss_fpu_occupancy                          0.0088
+fpss_fpu_rel_occupancy                        0.25
+cycles                                         226
+total_ipc                                   0.2478
+
+
+ssr:
+
+Performance metrics for section 1 @ (1908, 2221):
+snitch_loads                                     9
+fpss_stores                                      4
+fpss_loads                                       2
+snitch_stores                                    1
+snitch_avg_load_latency                     9.8889
+snitch_occupancy                            0.2357
+snitch_fseq_rel_offloads                    0.1395
+fseq_yield                                     1.0
+fseq_fpu_yield                                 1.0
+fpss_section_latency                             0
+fpss_avg_fpu_latency                           4.0
+fpss_avg_load_latency                          1.0
+fpss_occupancy                              0.0382
+fpss_fpu_occupancy                          0.0127
+fpss_fpu_rel_occupancy                      0.3333
+cycles                                         314
+total_ipc                                   0.2739
+
+frep:
+
+Performance metrics for section 1 @ (1917, 2145):
+snitch_loads                                     9
+fpss_stores                                      2
+snitch_stores                                    1
+fpss_loads                                       0
+snitch_avg_load_latency                     5.6667
+snitch_occupancy                            0.2664
+snitch_fseq_rel_offloads                    0.1159
+fseq_yield                                   1.125
+fseq_fpu_yield                               1.125
+fpss_section_latency                             0
+fpss_avg_fpu_latency                           4.2
+fpss_avg_load_latency                            0
+fpss_occupancy                              0.0393
+fpss_fpu_occupancy                          0.0218
+fpss_fpu_rel_occupancy                      0.5556
+cycles                                         229
+total_ipc                                   0.3057
+
+
+MULTIPLICATION
+
+
+
+(size = 20, core1)
+
+baseline:
+
+Performance metrics for section 1 @ (1898, 2220):
+snitch_loads                                     9
+fpss_loads                                       8
+fpss_stores                                      2
+snitch_stores                                    1
+snitch_avg_load_latency                    15.4444
+snitch_occupancy                            0.1734
+snitch_fseq_rel_offloads                       0.2
+fseq_yield                                     1.0
+fseq_fpu_yield                                 1.0
+fpss_section_latency                             0
+fpss_avg_fpu_latency                           5.0
+fpss_avg_load_latency                          1.0
+fpss_occupancy                              0.0433
+fpss_fpu_occupancy                          0.0124
+fpss_fpu_rel_occupancy                      0.2857
+cycles                                         323
+total_ipc                                   0.2167
+
+
+ssr:
+
+Performance metrics for section 1 @ (1908, 2386):
+snitch_loads                                     9
+fpss_stores                                      4
+fpss_loads                                       2
+snitch_stores                                    1
+snitch_avg_load_latency                     8.7778
+snitch_occupancy                            0.2443
+snitch_fseq_rel_offloads                    0.1333
+fseq_yield                                     1.0
+fseq_fpu_yield                                 1.0
+fpss_section_latency                             0
+fpss_avg_fpu_latency                           4.5
+fpss_avg_load_latency                          1.0
+fpss_occupancy                              0.0376
+fpss_fpu_occupancy                          0.0167
+fpss_fpu_rel_occupancy                      0.4444
+cycles                                         479
+total_ipc                                   0.2818
+
+
+
+
+POLAR
+
+
+
+(size = 20, core1)
+
+baseline: doesn't exist
+
+ssr:
+
+

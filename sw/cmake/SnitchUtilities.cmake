@@ -5,7 +5,7 @@
 # Locate the banshee simulator for test execution.
 set(SNITCH_BANSHEE "banshee" CACHE PATH "Path to the banshee simulator for testing")
 set(BANSHEE_TIMEOUT "360" CACHE STRING "Timeout when running tests on banshee")
-set(RUN_BANSHEE_ARGS "--num-cores=1" CACHE PATH "Arguments passed to the banshee sim for the run-banshee target")
+set(RUN_BANSHEE_ARGS "--num-cores=9" CACHE PATH "Arguments passed to the banshee sim for the run-banshee target")
 set(SNITCH_RUNTIME "snRuntime-banshee" CACHE STRING "Target name of the snRuntime flavor to link against")
 set(SNITCH_SIMULATOR "" CACHE PATH "Command to run a binary in an RTL simulation")
 set(SIMULATOR_TIMEOUT "1800" CACHE STRING "Timeout when running tests on RTL simulation")
